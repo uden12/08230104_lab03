@@ -8,7 +8,19 @@ const footerYear = document.getElementById("year");
 const dateTimeDisplay = document.getElementById("date-time");
 const homeQuote = document.querySelector(".home-quote");
 
-// ===== Function to Show Section =====
+// ===== Random Quotes =====
+const quotes = [
+  "Code is like humor. When you have to explain it, it’s bad.",
+  "Simplicity is the soul of efficiency.",
+  "Stay curious, keep learning.",
+  "Design is intelligence made visible.",
+  "Strive for progress, not perfection.",
+  "Education is the key to unlock your potential.",
+  "Projects transform ideas into reality.",
+  "Skills are the currency of the future."
+];
+
+// ===== Show Section Function =====
 function showSection(sectionId) {
   sections.forEach(sec => sec.style.display = "none");
   const targetSection = document.getElementById(sectionId);
@@ -83,41 +95,42 @@ showSection("home");
 // ===== Dynamic Footer Year =====
 footerYear.textContent = new Date().getFullYear();
 
-// ===== Dynamic Date & Time on Home =====
-function updateDateTime() {
+// ===== Greeting + Current Time + Random Quotes =====
+function updateGreetingQuotes() {
   const now = new Date();
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-  const dateString = now.toLocaleDateString(undefined, options);
-  dateTimeDisplay.textContent = `${dateString} | ${timeString}`;
+  const hours = now.getHours();
+  const minutes = now.getMinutes().toString().padStart(2, "0");
+  const seconds = now.getSeconds().toString().padStart(2, "0");
+
+  // Determine greeting
+  let greeting = "";
+  if (hours >= 5 && hours < 12) greeting = "Good Morning!";
+  else if (hours >= 12 && hours < 17) greeting = "Good Afternoon!";
+  else greeting = "Good Evening!";
+
+  // Format time in 12-hour format
+  const ampm = hours >= 12 ? "PM" : "AM";
+  const hour12 = hours % 12 || 12;
+  const timeString = `${hour12}:${minutes}:${seconds} ${ampm}`;
+
+  // Select a random quote
+  const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+
+  // Update homepage quote element
+  homeQuote.innerHTML = `${greeting} | ${timeString}<br><em>${randomQuote}</em>`;
 }
-setInterval(updateDateTime, 1000);
-updateDateTime();
 
-// ===== Random Quotes for Homepage & All Sections =====
-const quotes = [
-  "Code is like humor. When you have to explain it, it’s bad.",
-  "Simplicity is the soul of efficiency.",
-  "Stay curious, keep learning.",
-  "Design is intelligence made visible.",
-  "Strive for progress, not perfection.",
-  "Education is the key to unlock your potential.",
-  "Projects transform ideas into reality.",
-  "Skills are the currency of the future."
-];
+// Update every second
+setInterval(updateGreetingQuotes, 1000);
+updateGreetingQuotes();
 
-function updateQuotes() {
-  // Homepage
-  homeQuote.textContent = quotes[Math.floor(Math.random() * quotes.length)];
-
-  // Other sections
+// ===== Update All Other Quotes =====
+function updateOtherQuotes() {
   const quoteBoxes = document.querySelectorAll(".quote-box .quote");
   quoteBoxes.forEach(box => {
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
     box.textContent = randomQuote;
   });
 }
-
-// Rotate quotes every 8 seconds
-setInterval(updateQuotes, 8000);
-updateQuotes();
+setInterval(updateOtherQuotes, 8000);
+updateOtherQuotes();
