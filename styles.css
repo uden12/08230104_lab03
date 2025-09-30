@@ -1,0 +1,307 @@
+/* ===== General Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  line-height: 1.6;
+  color: #fff;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+}
+
+.container {
+  width: 85%;
+  margin: auto;
+  max-width: 1200px;
+}
+
+/* ===== Header & Navigation ===== */
+header {
+  background: rgba(0,0,0,0.8);
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00c6ff;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: nowrap;
+  list-style: none;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+nav ul li {
+  margin-left: 10px;
+  white-space: nowrap;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  font-size: clamp(0.7rem, 2vw, 1rem);
+  transition: color 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a:focus,
+nav ul li a.active {
+  color: #00c6ff;
+}
+
+/* ===== Sections ===== */
+.section {
+  display: none;
+  padding: 80px 0;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #00c6ff;
+}
+
+.section p {
+  max-width: 700px;
+  margin: auto;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* ===== Hero / Home Section ===== */
+#home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #0f2027);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: #fff;
+  text-align: center;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+#home img.profile-pic {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  border: 4px solid #00c6ff;
+  cursor: pointer;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  box-shadow: 0 0 20px rgba(0,198,255,0.5);
+}
+
+#home img.profile-pic:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 35px #00c6ff;
+}
+
+#home h1 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px #00c6ff;
+}
+
+#home .btn {
+  padding: 10px 20px;
+  background: #00c6ff;
+  color: #111;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#home .btn:hover {
+  background: #0072ff;
+  color: #fff;
+}
+/* ===== Homepage Quote Heading ===== */
+.home-quote {
+  font-size: 1.8rem;
+  margin: 15px 0;
+  color: #00c6ff;
+  font-style: italic;
+  text-shadow: 0 0 10px #00c6ff;
+  transition: all 0.5s ease;
+}
+
+.home-quote:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 20px #00c6ff;
+}
+
+/* ===== Date & Time ===== */
+#home .date-time {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #00c6ff;
+  font-weight: 500;
+  text-shadow: 0 0 5px #00c6ff;
+}
+
+/* ===== Quote Boxes ===== */
+.quote-box {
+  margin: 20px auto;
+  background: rgba(0,198,255,0.1);
+  color: #00c6ff;
+  font-style: italic;
+  padding: 15px 20px;
+  border-radius: 12px;
+  max-width: 600px;
+  box-shadow: 0 8px 20px rgba(0,198,255,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.quote-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,198,255,0.5);
+}
+
+/* ===== Section Images ===== */
+.section-img {
+  width: 160px;
+  height: 160px;
+  border-radius: 15px;
+  border: 3px solid #00c6ff;
+  margin-bottom: 20px;
+  object-fit: cover;
+  box-shadow: 0 8px 20px rgba(0,198,255,0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.section-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 25px rgba(0,198,255,0.6);
+}
+
+/* ===== Cards ===== */
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  backdrop-filter: blur(10px);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0,198,255,0.4);
+}
+
+.card img {
+  max-width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  color: #00c6ff;
+}
+
+/* ===== Contact Form ===== */
+#contact form {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#contact input,
+#contact textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+}
+
+#contact input:focus,
+#contact textarea:focus {
+  border-color: #00c6ff;
+}
+
+#contact button {
+  padding: 12px;
+  border: none;
+  background: #00c6ff;
+  color: #111;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#contact button:hover {
+  background: #0072ff;
+  color: #fff;
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  padding: 20px 0;
+  background: rgba(0,0,0,0.8);
+  font-size: 0.9rem;
+}
+
+/* ===== Animation Defaults ===== */
+.card,
+.section-img,
+#home h1,
+#home .btn {
+  transition: all 0.6s ease-out;
+}
+
+/* ===== Responsive ===== */
+@media screen and (max-width: 768px) {
+  .logo { font-size: 1rem; }
+  nav ul li a { font-size: clamp(0.7rem,2vw,0.9rem); }
+  #home img.profile-pic { width: 140px; height: 140px; }
+  .section-img { width: 120px; height: 120px; }
+  .card img { height: 120px; }
+}
+
+@media screen and (max-width: 480px) {
+  nav ul li a { font-size: clamp(0.6rem,3vw,0.8rem); }
+}
