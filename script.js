@@ -134,3 +134,39 @@ function updateOtherQuotes() {
 }
 setInterval(updateOtherQuotes, 8000);
 updateOtherQuotes();
+// ===== Typing Effect for Headers =====
+function typeWriter(element, text, speed = 100) {
+  element.textContent = "";
+  let i = 0;
+  function typing() {
+    if (i < text.length) {
+      element.textContent += text.charAt(i);
+      i++;
+      setTimeout(typing, speed);
+    }
+  }
+  typing();
+}
+
+// ===== Show Section with Fade Animation + Typing Header =====
+function showSection(sectionId) {
+  sections.forEach(sec => {
+    sec.style.opacity = "0";
+    sec.style.display = "none";
+  });
+
+  const targetSection = document.getElementById(sectionId);
+  if (targetSection) {
+    targetSection.style.display = "block";
+    setTimeout(() => {
+      targetSection.style.opacity = "1";
+      targetSection.scrollIntoView({ behavior: "smooth" });
+
+      // Find header (h1 or h2 inside the section)
+      const header = targetSection.querySelector("h1, h2");
+      if (header) {
+        typeWriter(header, header.textContent, 80); // speed = 80ms per char
+      }
+    }, 50);
+  }
+}
